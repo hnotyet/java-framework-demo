@@ -6,32 +6,20 @@
 
 package com.yest.springcloudeurekademo.servlet;
 
-import java.lang.management.ManagementFactory;
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
-import javax.management.Query;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.util.StringUtils;
 
 public class EnvHelper {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws SocketException {
     getLocalIp("192.168.0.*");
   }
 
-  public static String getLocalIp(String reg) {
+  public static String getLocalIp(String reg) throws SocketException {
     Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
     Pattern pattern = Pattern.compile(reg);
 
@@ -47,5 +35,6 @@ public class EnvHelper {
         }
       }
     }
+    return null;
   }
 }

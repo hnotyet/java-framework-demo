@@ -4,13 +4,32 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.yest</groupId>
-    <artifactId>java-framework-demo</artifactId>
-    <version>${revision}</version>
-    <relativePath>../pom.xml</relativePath>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.3.4.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
   </parent>
+  <groupId>com.yest</groupId>
+  <artifactId>java-framework-demo</artifactId>
+  <version>${revision}</version>
+  <name>java-framework-demo</name>
+  <packaging>pom</packaging>
 
-  <artifactId>spring-cloud-eureka-consumer-demo</artifactId>
+  <properties>
+    <java.version>1.8</java.version>
+    <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+    <revision>0.0.1-SNAPSHOT</revision>
+  </properties>
+
+  <modules>
+    <module>spring-cloud-eureka-producer-demo</module>
+    <module>spring-cloud-eureka-consumer-demo</module>
+    <module>spring-cloud-eureka-server-demo</module>
+    <module>spring-cloud-gateway-demo</module>
+    <module>spring-cloud-task-demo</module>
+    <module>spring-grpc-demo</module>
+    <module>netty-demo</module>
+  </modules>
 
   <dependencies>
     <dependency>
@@ -45,7 +64,6 @@
       <version>2.7.5</version>
     </dependency>
 
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -59,7 +77,28 @@
     </dependency>
   </dependencies>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
+<!--  <repositories>-->
+<!--    <repository>-->
+<!--      <id>taofen8.repo</id>-->
+<!--      <url>http://mvn.taofen8.com/artifactory/repo</url>-->
+<!--      <snapshots>-->
+<!--        <enabled>true</enabled>-->
+<!--        <updatePolicy>always</updatePolicy>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
+<!--  </repositories>-->
 
   <build>
     <plugins>
