@@ -10,7 +10,7 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <artifactId>grpc-demo</artifactId>
+  <artifactId>spring-grpc-demo</artifactId>
 
   <dependencies>
 
